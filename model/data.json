@@ -1,0 +1,20 @@
+[
+    {
+        "id": 0,
+        "brand": "구찌",
+        "founder": "구찌오 구찌",
+        "country": "이탈리아"
+    },
+    {
+        "id": 1,
+        "brand": "샤넬",
+        "founder": "코코 샤넬",
+        "country": "프랑스"
+    },
+    {
+        "id": 2,
+        "brand": "버버리",
+        "founder": "토마스 버버리",
+        "country": "영국"
+    }
+]
