@@ -16,7 +16,7 @@ JSON 초기 데이터, Express를 이용해서 작성한 REST 서버
 ## 통신규약
 요청에 따른 응답
 
-Get /luxuries : 모든 데이터 출력
+1. Get /luxuries : 모든 데이터 출력
  - req : localhost:3000/luxuries
  - res : {"data":[
      {"id":0,"brand":"구찌","founder":"구찌오 구찌","country":"이탈리아"},
@@ -24,7 +24,7 @@ Get /luxuries : 모든 데이터 출력
      {"id":2,"brand":"버버리","founder":"토마스 버버리","country":"영국"}
      ],"count":3}
 
-Get /luxuries/:luxuryId : 해당 id 출력
+2. Get /luxuries/:luxuryId : 해당 id 출력
  - req : localhost:3000/luxuries/1
  - res : {
      "id":1,
@@ -33,7 +33,7 @@ Get /luxuries/:luxuryId : 해당 id 출력
      "country":"프랑스"
      }
 
-Post /luxuries : 데이터 추가
+3. Post /luxuries : 데이터 추가
  - req : localhost:3000/luxuries
     * body, x-www-form-urlencoded
     * {
@@ -44,23 +44,49 @@ Post /luxuries : 데이터 추가
  - res :
 
 
+***
+
 
 # 프론트 엔드 추가 (7주차)
  - 페이지 제작에 REACT 모듈 사용
 
 ## Mapping
- - get('/', index)
- - get('/luxuries', showLuxuryList)
- - get('/luxuries/:luxuryId', showLuxuryDetail)
- - get('/luxury/add', newLuxury)
- - post('/luxuries', addLuxury)
+Method | URL | 기능
+------ | ------ | ------
+get | / | Index Page
+get | /luxuries | 전체 조회
+get | /luxuries/:luxuryId | 상세 조회
+get | /luxury/add | Add Page
+post | /luxuries | 추가
 
- ## View 이동
-  - 전체 조회
-    * index.jsx -> 전체조회(get /luxuries) -> showList.jsx
+## View 이동
+1. 전체 조회
+  - index.jsx -> 전체조회(get /luxuries) -> showList.jsx
 
-  - 추가
-    * index.jsx -> 새로만들기(get /luxury/add) -> newLuxury.jsx -> 추가(post /luxuries) -> showList.jsx
+2. 추가
+  - index.jsx -> 새로만들기(get /luxury/add) -> newLuxury.jsx -> 추가(post /luxuries) -> showList.jsx
 
-  - 상세 보기
-    * showList.jsx -> brand(get /luxuries/:luxuryId) -> showDetail.jsx
+3. 상세 보기
+  - showList.jsx -> brand(get /luxuries/:luxuryId) -> showDetail.jsx
+
+
+***
+
+
+# DB 연동 (8주차)
+  - JSON 데이터 파일을 읽어오던 프로젝트에 DB를 적용
+
+## 작업 내용
+  - /model/dbConnection.js 생성
+    * mysql2 모듈 추가
+    * mysql 정보 등록
+    * Promise 기반 Connecion Pool 생성
+
+  - /model/prepareTable.js 생성
+    * 테이블을 생성
+    * JSON 기반 데이터 파일을 읽음
+    * DB에 저장
+
+  - LuxuryModel.js / LuxuryRouter.js
+    * Promise 기반의 Connection Pool을 생섬하고 사용함에 따라서 비동기 로직 처리
+    * async, await 구조로 변경

@@ -1,44 +1,55 @@
-const fs = require('fs');
+const pool = require('./dbConnection');
+const { prepareTable } = require('./prepareTable');
 
-class Luxury {
+
+class LuxuryModel {
+
     constructor() {
-        const data = fs.readFileSync('./model/data.json');
-        this.luxuries = JSON.parse(data)
+        try {
+            prepareTable();
+        } catch (error) {
+            console.error(error);
+        }
     }
 
+
     // 전체 List
-    getLuxuryList() {
-        if (this.luxuries) {
-            return this.luxuries;
+    async getLuxuryList() {
+        try {
+            const conn = await pool.getConnection();
+            const ret = await conn.query('SELECT * FROM luxuries;');
+            conn.release();
+            return ret[0];
+        } catch (error) {
+            console.error(error);
         }
-        else {
-            return [];
+    }
+
+    // 상세
+    async getLuxuryDetail(luxuryId) {
+        try {
+            const conn = await pool.getConnection();
+            const ret = await conn.query('select * from luxuries where luxury_id=?;', luxuryId);
+            conn.release();
+            return ret[0];
+        } catch (error) {
+            console.error(error);
         }
     }
 
     // 추가
-    addLuxury(brand, founder, country) {
-        return new Promise((resolve, reject) => {
-            let last = this.luxuries[this.luxuries.length - 1];
-            let id = last.id + 1;
-
-            let newLuxury = { id, brand, founder, country };
-            this.luxuries.push(newLuxury);
-
-            resolve(newLuxury);
-        });
-    }
-
-
-    // 상세
-    getLuxuryDetail(luxuryId) {
-        for (var luxury of this.luxuries) {
-            if (luxury.id == luxuryId) {
-                return luxury;
-            }
+    async addLuxury(brand, founder, country) {
+        let newLuxury = { brand, founder, country };
+        try {
+            const conn = await pool.getConnection();
+            const ret = await conn.query('insert into luxuries set ?;', newLuxury);
+            conn.release();
+            return newLuxury;
+        } catch (error) {
+            console.error(error);
         }
-        reject({ msg: 'Can not find luxury', code: 404 });
     }
+
 }
 
-module.exports = new Luxury();
+module.exports = new LuxuryModel();

@@ -23,7 +23,7 @@ class ShowList extends React.Component {
                 </body>
             </html>
         );
-    }
-}
 
+    }
+};
 module.exports = ShowList;

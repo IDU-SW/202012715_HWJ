@@ -7,15 +7,16 @@ class ShowDetail extends React.Component {
                 <head><title>Detail</title></head>
                 <body>
                     <div>
-                        <h1>{this.props.luxury.title}</h1>
+                        <h1>{this.props.title}</h1>
                     </div>
                     <div>
-                        <form>
-                            <input type="text" readonly value={this.props.luxury.id}></input><br/>
-                            <input type="text" readonly value={this.props.luxury.brand}></input><br/>
-                            <input type="text" readonly value={this.props.luxury.founder}></input><br/>
-                            <input type="text" readonly value={this.props.luxury.country}></input>
-                        </form>
+                        id : {this.props.luxury[0].luxury_id}<br/>
+                        brand : {this.props.luxury[0].brand}<br/>
+                        founder : {this.props.luxury[0].founder}<br/>
+                        country : {this.props.luxury[0].country}<br/>
+                    </div>
+                    <div>
+                        <a href="/">Index로 돌아가기</a>
                     </div>
                 </body>
             </html>

@@ -1,14 +1,15 @@
+const luxuryModel = require('../model/LuxuryModel');
 const express = require('express');
 const router = express.Router();
-const luxuryModel = require('../model/LuxuryModel');
-const luxuryList = luxuryModel.getLuxuryList();
+
 
 // mapping
 router.get('/', index); // index
-router.get('/luxuries', showLuxuryList); // readAll
-router.get('/luxuries/:luxuryId', showLuxuryDetail); // read
-router.get('/luxury/add', newLuxury); // add-page
-router.post('/luxuries', addLuxury); // add
+router.get('/luxuries', showLuxuryList); // 전체 조회
+router.get('/luxuries/:luxuryId', showLuxuryDetail); // 상세
+router.get('/luxury/add', newLuxury); // 추가 페이지 이동
+router.post('/luxuries', addLuxury); // 추가
+
 
 
 // index
@@ -17,23 +18,20 @@ function index(req, res) {
 }
 
 
-// readAll
-function showLuxuryList(req, res) {
-    // const result = { data:luxuryList, count:luxuryList.length };
+// 전체 조회
+async function showLuxuryList(req, res) {
+    const luxuryList = await luxuryModel.getLuxuryList();
+    console.log(luxuryList);
     res.render('showList', {title:'명품 리스트', luxury:luxuryList});
 }
 
 
-// read
-function showLuxuryDetail(req, res) {
+// 상세
+async function showLuxuryDetail(req, res) {
     try {
         const luxuryId = req.params.luxuryId;
-        console.log('luxuryId : ', luxuryId);
-        const info = luxuryModel.getLuxuryDetail(luxuryId);
-        console.log('luxuryList : ', luxuryList)
-
-        console.log('luxuryInfo : ', info)
-
+        const info = await luxuryModel.getLuxuryDetail(luxuryId);
+        console.log(info);
         res.render("showDetail", {title:"상세 보기", luxury:info});
     }
     catch ( error ) {
@@ -43,14 +41,13 @@ function showLuxuryDetail(req, res) {
 }
 
 
-// add-page
+// 추가 페이지 이동
 function newLuxury(req, res) {
-    console.log('new is here');
     res.render('newLuxury');
 }
 
 
-// add
+// 추가
 async function addLuxury(req, res) {
     const brand = req.body.brand;
 
@@ -64,7 +61,7 @@ async function addLuxury(req, res) {
 
     try {
         const result = await luxuryModel.addLuxury(brand, founder, country);
-        // res.send({msg:'success', data:result});
+        const luxuryList = await luxuryModel.getLuxuryList();
         res.render('showList', {title:'명품 리스트', luxury:luxuryList});
     }
     catch ( error ) {
