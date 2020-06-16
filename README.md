@@ -42,3 +42,25 @@ Post /luxuries : 데이터 추가
         "country" : "프랑스"
     }
  - res :
+
+
+
+# 프론트 엔드 추가 (7주차)
+ - 페이지 제작에 REACT 모듈 사용
+
+## Mapping
+ - get('/', index)
+ - get('/luxuries', showLuxuryList)
+ - get('/luxuries/:luxuryId', showLuxuryDetail)
+ - get('/luxury/add', newLuxury)
+ - post('/luxuries', addLuxury)
+
+ ## View 이동
+  - 전체 조회
+    * index.jsx -> 전체조회(get /luxuries) -> showList.jsx
+
+  - 추가
+    * index.jsx -> 새로만들기(get /luxury/add) -> newLuxury.jsx -> 추가(post /luxuries) -> showList.jsx
+
+  - 상세 보기
+    * showList.jsx -> brand(get /luxuries/:luxuryId) -> showDetail.jsx
