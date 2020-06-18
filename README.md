@@ -6,6 +6,8 @@ get | /luxuries | 전체 조회
 get | /luxuries/:luxuryId | 상세 조회
 get | /luxury/add | Add Page
 post | /luxuries | 추가
+post | /luxury/edit/:luxuryId | 수정
+get | /luxury/del/:luxuryId | 삭제
 
 
 # REST 서비스 (6주차)
