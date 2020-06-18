@@ -10,7 +10,7 @@ class ShowDetail extends React.Component {
                         <h1>{this.props.title}</h1>
                     </div>
                     <div>
-                        <form method="post" action={'/luxury/edit/' + this.props.luxury.luxury_id}>
+                        <form method="post" action={'/luxury/edit/' + this.props.luxury._id}>
                             <table>
                                 <tr align="center">
                                     <td>
@@ -28,7 +28,7 @@ class ShowDetail extends React.Component {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" name="luxury_id" value={this.props.luxury.luxury_id} readOnly /><br/>
+                                        <input type="text" name="luxury_id" value={this.props.luxury._id} readOnly /><br/>
                                     </td>
                                     <td>
                                         <input type="text" name="brand" value={this.props.luxury.brand} /><br/>
@@ -43,7 +43,7 @@ class ShowDetail extends React.Component {
                                 <tr>
                                     <td>
                                         <input type="submit" value="수정" />&nbsp;&nbsp;&nbsp;
-                                        <a href={'/luxury/del/' + this.props.luxury.luxury_id}>삭제</a>
+                                        <a href={'/luxury/del/' + this.props.luxury._id}>삭제</a>
                                     </td>
                                 </tr>
                             </table>

@@ -3,9 +3,16 @@ const ShowListItem = require('./ShowListItem');
 
 class ShowList extends React.Component {
     render() {
-        let items = this.props.luxury.map( (item, index) => {
-            return <ShowListItem item={item} key={index}/>
-        });
+        let items = new Array(this.props.luxury.len);
+        let i = 0;
+        for(var key in this.props.luxury){
+            items[i] = this.props.luxury[key];
+            i = i + 1;
+        }
+
+        // let items = this.props.luxury.map( (item, index) => {
+        //     return <ShowListItem item={item} key={index}/>
+        // });
 
         return (
             <html>
@@ -14,7 +21,7 @@ class ShowList extends React.Component {
                     <div>
                         <h1>{this.props.title}</h1>
                         <ul>
-                            {items}
+                            <li>{items}</li>
                         </ul>
                     </div>
                     <div>

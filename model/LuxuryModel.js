@@ -1,59 +1,50 @@
+// mongoDB
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/example', {useNewUrlParser: true});
+const db = mongoose.connection;
+
+db.on('open', () => {
+    console.log('Mongoose Success');
+});
+db.on('error', (err) => {
+    console.log('Mongoose Fail');
+});
+
+// 스키마 정의 및 생성
+const LuxuryTable = mongoose.Schema({
+    brand: String,
+    founder: String,
+    country: String
+});
+LTable = mongoose.model('luxuries', LuxuryTable);
+
+// json 데이터 파일 가져오기
 const fs = require('fs');
-const data = fs.readFileSync('./model/data.json');
-
-// myslq DB 연동
-const Sequelize = require('sequelize');
-const dbConnectUri = 'mysql://dev:secret@127.0.0.1:3306/example';
-const sequelize = new Sequelize(dbConnectUri); 
-
-// luxuries 테이블 클래스 정의
-class LuxuryTable extends Sequelize.Model {}
-LuxuryTable.init({
-    luxury_id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    brand: Sequelize.STRING(30),
-    founder: Sequelize.STRING(30),
-    country: Sequelize.STRING(20)
-}, {tableName: 'luxuries', sequelize})
-
 
 // 모델 클래스
 class LuxuryModel {
     
-    // 생성자, JSON 데이터를 테이블에 추가하는 메소드(prepareTable()) 호출
+    // 생성자, JSON 파일에 있는 데이터를 가져와서 입력
     constructor(){
         try{
-            this.prepareTable();
+            const data = fs.readFileSync('./model/data.json');
+            const luxuries = JSON.parse(data);
+            for (var luxury of luxuries){
+                this.luxurydata(luxury);
+            }
         }catch (err){
             console.error(err);
         }
     }
 
-    // 테이블 생성 및 json 데이터를 테이블에 입력하는 메소드(jsonToDB()) 호출
-    async prepareTable() {
-        try{
-            await LuxuryTable.sync({force:true});
-            const luxuries = JSON.parse(data);
-            for (var luxury of luxuries) {
-                await this.luxurydata(luxury);
-            }
-        }catch(error){
-            console.log('테이블 생성 실패', error);
-        }
-    }
-
-    // insert Data
+    // 초기값 넣기
     async luxurydata(luxury) {
         try {
-            const ret = await LuxuryTable.create({
+            await LTable.create({
                 brand: luxury.brand,
                 founder: luxury.founder,
                 country: luxury.country,
             }, {logging: false});
-            const newData = ret.dataValues;
         }catch(error){
             console.error(error);
         }
@@ -63,14 +54,13 @@ class LuxuryModel {
 
     // 전체 List
     async getLuxuryList() {
-        var results = await LuxuryTable.findAll()     
-        return results;
+        return await LTable.find({});
     }
 
     // 상세
     async getLuxuryDetail(luxuryId) {
         try {
-            var result = await LuxuryTable.findAll({where: {luxury_id:luxuryId}});
+            var result = await LTable.find({_id:luxuryId});
             if(result)
                 return result[0];
             else
@@ -84,8 +74,7 @@ class LuxuryModel {
     async addLuxury(brand, founder, country) {
         let newLuxury = { brand, founder, country };
         try {
-            var newData = await this.luxurydata(newLuxury);
-            return newData;
+            await this.luxurydata(newLuxury);
         } catch (error) {
             console.error(error);
         }
@@ -95,7 +84,7 @@ class LuxuryModel {
     // 수정
     async editLuxury(luxuryId, brand, founder, country) {
         try {
-            let luxury = await LuxuryTable.findByPk(luxuryId);
+            let luxury = await LTable.findOne({_id: luxuryId});
             luxury.brand = brand;
             luxury.founder = founder;
             luxury.country = country;
@@ -111,8 +100,7 @@ class LuxuryModel {
     // 삭제
     async delLuxury(luxuryId) {
         try {
-            console.log(luxuryId)
-            await LuxuryTable.destroy({where: {luxury_id:luxuryId}});
+            await LTable.destroy({_id:luxuryId});
         }
         catch (error) {
             console.log(error);

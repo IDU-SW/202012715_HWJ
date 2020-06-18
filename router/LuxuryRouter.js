@@ -1,6 +1,5 @@
 const luxuryModel = require('../model/LuxuryModel');
 const express = require('express');
-const LuxuryModel = require('../model/LuxuryModel');
 const router = express.Router();
 var luxuryList;
 
@@ -14,8 +13,6 @@ router.post('/luxury/edit/:luxuryId', editLuxury); // 수정
 router.get('/luxury/del/:luxuryId', delLuxury); // 삭제
 
 
-module.exports = router;
-
 // index
 async function index(req, res) {
     luxuryList = await luxuryModel.getLuxuryList();
@@ -25,6 +22,7 @@ async function index(req, res) {
 
 // 전체 조회
 async function showLuxuryList(req, res) {
+    console.log('여기야여기!!!\n', luxuryList);
     res.render('showList', {title:'명품 리스트', luxury:luxuryList});
 }
 
@@ -74,7 +72,7 @@ async function addLuxury(req, res) {
 // 수정
 async function editLuxury(req, res) {
     try {
-        const luxuryId = req.body.luxury_id;
+        const luxuryId = req.body._id;
         const brand = req.body.brand;
         let founder = req.body.founder;
         let country = req.body.country;
@@ -93,10 +91,12 @@ async function editLuxury(req, res) {
 async function delLuxury(req, res) {
     try {
         let luxuryId = req.params.luxuryId;
-        await LuxuryModel.delLuxury(luxuryId);
+        await luxuryModel.delLuxury(luxuryId);
         res.render('index');
     }
     catch ( error ) {
         res.status(500).send(error.msg);
     }
 }
+
+module.exports = router;
