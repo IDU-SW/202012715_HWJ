@@ -1,3 +1,12 @@
+# Mapping
+Method | URL | 기능
+------ | ------ | ------
+get | / | Index Page
+get | /luxuries | 전체 조회
+get | /luxuries/:luxuryId | 상세 조회
+get | /luxury/add | Add Page
+post | /luxuries | 추가
+
 
 # REST 서비스 (6주차)
 
@@ -50,15 +59,6 @@ JSON 초기 데이터, Express를 이용해서 작성한 REST 서버
 # 프론트 엔드 추가 (7주차)
  - 페이지 제작에 REACT 모듈 사용
 
-## Mapping
-Method | URL | 기능
------- | ------ | ------
-get | / | Index Page
-get | /luxuries | 전체 조회
-get | /luxuries/:luxuryId | 상세 조회
-get | /luxury/add | Add Page
-post | /luxuries | 추가
-
 ## View 이동
 1. 전체 조회
   - index.jsx -> 전체조회(get /luxuries) -> showList.jsx
@@ -90,3 +90,22 @@ post | /luxuries | 추가
   - LuxuryModel.js / LuxuryRouter.js
     * Promise 기반의 Connection Pool을 생섬하고 사용함에 따라서 비동기 로직 처리
     * async, await 구조로 변경
+    
+
+***
+
+
+# Sequelize 적용 (9주차)
+  - 프로젝트에 ORM 방식의 Sequelize를 적용
+  - ORM : 객체와 모델의 매핑
+  - 지원 DB : PostgreSQL, MySQL, MariaDB, SQLite, MSSQL
+
+## 작업 내용
+  - DB와 관련된 서비스를 Model에서만 하도록 변경
+    * Model에 dbConnection, prepareTable 작업 추가
+    * Sequalize ORM 방식을 통해 SQL 작업 간소화
+
+  - 기능 추가
+    * 수정
+    * 삭제
+

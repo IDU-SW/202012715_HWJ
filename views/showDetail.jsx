@@ -10,10 +10,45 @@ class ShowDetail extends React.Component {
                         <h1>{this.props.title}</h1>
                     </div>
                     <div>
-                        id : {this.props.luxury[0].luxury_id}<br/>
-                        brand : {this.props.luxury[0].brand}<br/>
-                        founder : {this.props.luxury[0].founder}<br/>
-                        country : {this.props.luxury[0].country}<br/>
+                        <form method="post" action={'/luxury/edit/' + this.props.luxury.luxury_id}>
+                            <table>
+                                <tr align="center">
+                                    <td>
+                                        id
+                                    </td>
+                                    <td>
+                                        brand
+                                    </td>
+                                    <td>
+                                        founder
+                                    </td>
+                                    <td>
+                                        country
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" name="luxury_id" value={this.props.luxury.luxury_id} readOnly /><br/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="brand" value={this.props.luxury.brand} /><br/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="founder" value={this.props.luxury.founder} /><br/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="country" value={this.props.luxury.country} /><br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="수정" />&nbsp;&nbsp;&nbsp;
+                                        <a href={'/luxury/del/' + this.props.luxury.luxury_id}>삭제</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </form>
                     </div>
                     <div>
                         <a href="/">Index로 돌아가기</a>
