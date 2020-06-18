@@ -135,3 +135,9 @@ user = {
 ## 인증이 필요한 곳
  - 전체조회에서 상세조회로 넘어가는 부분
  - 미 로그인 시, 로그인 페이지로 넘어감
+
+ ## 작업 내용
+  - app.js 에 session 사용을 위한 설정
+  - login.jsx 페이지 생성
+  - index.jsx 에 login, logout 추가
+  - Router.js 에서 로그인 상태에 따른 기능 제한 기능 추가
