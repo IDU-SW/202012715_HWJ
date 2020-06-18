@@ -1,7 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const app = express();
 
+// session
+app.use(session({
+    secret:'Secret Key',
+    resave:false,
+    saveUninitialized:false
+}));
 
 // json 데이터 파일 바디파서
 app.use(bodyParser.json({}));
