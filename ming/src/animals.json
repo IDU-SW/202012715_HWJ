@@ -1,0 +1,121 @@
+{
+    "Item": [
+        {
+            "name": "럭키",
+            "species": "강아지",
+            "sex": "남성",
+            "birth": "2020.11.04",
+            "personality": "먹보",
+            "colors": [
+                "베이지",
+                "화이트"
+            ],
+            "rank": "82",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EB%9F%AD%ED%82%A4&Category_Per=%EB%A8%B9%EB%B3%B4"
+        },
+        {
+            "name": "벤",
+            "species": "강아지",
+            "sex": "남성",
+            "birth": "2020.06.10",
+            "personality": "먹보",
+            "colors": [
+                "오렌지",
+                "빨간색"
+            ],
+            "rank": "59",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?Category=&Category_Per=%EB%A8%B9%EB%B3%B4&search_text=%EB%B2%A4&Category_B=&Initial_phrase=&Sub_type=&Greetings_type=&Sociability=&Hobby=&BGM=&toptop=&Umbrella=&Style_1=&Style_2=&Color_1=&Color_2=&Wallpaper=&Flooring=&Favorite_saying="
+        },
+        {
+            "name": "바닐라",
+            "species": "강아지",
+            "sex": "여성",
+            "birth": "2020.11.16",
+            "personality": "상냥함",
+            "colors": [
+                "컬러풀",
+                "블루"
+            ],
+            "rank": "28",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EB%B0%94%EB%8B%90%EB%9D%BC&Category_Per=%EC%83%81%EB%83%A5%ED%95%A8"
+        },
+        {
+            "name": "시베리아",
+            "species": "늑대",
+            "sex": "남성",
+            "birth": "2020.12.18",
+            "personality": "무뚝뚝",
+            "colors": [
+                "라이트블루",
+                "화이트"
+            ],
+            "rank": "7",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EC%8B%9C%EB%B2%A0%EB%A6%AC%EC%95%84&Category_Per=%EB%AC%B4%EB%9A%9D%EB%9A%9D"
+        },
+        {
+            "name": "비앙카",
+            "species": "늑대",
+            "sex": "여성",
+            "birth": "2020.09.17",
+            "personality": "성숙함",
+            "colors": [
+                "블루",
+                "라이트블루"
+            ],
+            "rank": "4",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EB%B9%84%EC%95%99%EC%B9%B4&Category_Per=%EC%84%B1%EC%88%99%ED%95%A8"
+        },
+        {
+            "name": "모니카",
+            "species": "늑대",
+            "sex": "남성",
+            "birth": "2020.08.31",
+            "personality": "아이돌",
+            "colors": [
+                "그린",
+                "화이트"
+            ],
+            "rank": "9",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EB%AA%A8%EB%8B%88%EC%B9%B4&Category_Per=%EC%95%84%EC%9D%B4%EB%8F%8C"
+        },
+        {
+            "name": "호랭이",
+            "species": "호랑이",
+            "sex": "남성",
+            "birth": "2020.08.22",
+            "personality": "무뚝뚝",
+            "colors": [
+                "블루",
+                "블랙"
+            ],
+            "rank": "107",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%ED%98%B8%EB%9E%AD%EC%9D%B4&Category_Per=%EB%AC%B4%EB%9A%9D%EB%9A%9D"
+        },
+        {
+            "name": "잭슨",
+            "species": "고양이",
+            "sex": "남성",
+            "birth": "2020.10.01",
+            "personality": "느끼함",
+            "colors": [
+                "블랙",
+                "그레이"
+            ],
+            "rank": "1",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EC%9E%AD%EC%8A%A8&Category_Per=%EB%8A%90%EB%81%BC%ED%95%A8"
+        },
+        {
+            "name": "쭈니",
+            "species": "다람쥐",
+            "sex": "남성",
+            "birth": "2020.09.29",
+            "personality": "느끼함",
+            "colors": [
+                "라이트블루",
+                "블루"
+            ],
+            "rank": "82",
+            "link": "https://animalcrossing.soopoolleaf.com/ko/acnh/animalsearch/?search_text=%EC%AD%88%EB%8B%88&Category_Per=%EB%8A%90%EB%81%BC%ED%95%A8"
+        }
+    ]
+}
